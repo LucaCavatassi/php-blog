@@ -22,6 +22,10 @@
                             <h6 class="card-subtitle mb-2 text-body-secondary">Written by <i><strong>' . htmlspecialchars($post['username']) . '</strong></i></h6>
                             <p class="card-text">' . htmlspecialchars($post['content']) . '</p>
                             <p class="card-subtitle mb-2 text-body-secondary">Category <i><strong>' . htmlspecialchars($post['name']) . '</strong></i></p>
+                            <form action="show_post.php" method="POST">
+                                <input type="hidden" name="id" value=' . $post['id'] . '>
+                                <button type="submit" class="btn btn-primary">View Post</button>
+                            </form>
                         </div>
                     </div>';
             }
