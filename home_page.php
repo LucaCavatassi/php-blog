@@ -1,6 +1,6 @@
 <?php include 'layout.php'; ?>
 
-<h1 class="container mt-5">All blogs posts</h1>
+<h1 class="container mt-5">All blog posts</h1>
 
 <?php
     // Include the fetch script to get posts

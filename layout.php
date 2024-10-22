@@ -22,16 +22,16 @@
                 <a href="home_page.php"><h1 class="text-white">My Blog</h1></a>
         
                 <nav>
-                <?php 
-                    session_start();
-                    // var_dump($_SESSION);
-                    if (isset($_SESSION['user_id'])) {
-                        echo '<a class="btn btn-secondary" href="create_post_page.php">&plus; Add Post</a>';
-                        echo '<a class="ms-4 btn btn-primary" href="logut.php">Logout</a>';
-                    } else {
-                        echo '<a class="btn btn-primary" href="login_page.php">Login</a>';
-                    }
-                ?>
+                    <?php 
+                        session_start();
+                        // var_dump($_SESSION);
+                        if (isset($_SESSION['user_id'])) {
+                            echo '<a class="btn btn-secondary" href="create_post_page.php">&plus; Add Post</a>';
+                            echo '<form action="logout.php" method="POST" class="d-inline"><button class="ms-4 btn btn-primary">Logout</button></form>';
+                        } else {
+                            echo '<a class="btn btn-primary" href="login_page.php">Login</a>';
+                        }
+                    ?>
                 </nav>
             </div>
         </header>

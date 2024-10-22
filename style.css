@@ -15,7 +15,7 @@ a:hover {
     color: darkblue!important;
 }
 
-form {
+.ms-form {
     padding: 2.5rem;
     border: 2px solid cornflowerblue;
     border-radius: 10px;

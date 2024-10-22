@@ -1,6 +1,6 @@
 <?php include 'layout.php'; ?>
 
-<div class="container mt-5">
+<div class="container mt-5 ms-form">
     <!-- On action the file that handles the login -->
     <form action="login.php" method="POST">
         <div class="mb-3">
