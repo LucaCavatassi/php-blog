@@ -16,9 +16,14 @@
     if (!empty($rows)) {
         echo '<div class="container mt-3">';
             foreach ($rows as $post) {
-                echo '<h2>' . htmlspecialchars($post['title']) . '</h2>'; // Assuming there's a title field
-                echo '<p>' . htmlspecialchars($post['content']) . '</p>'; // Assuming there's a content field
-                echo '<hr>'; // Separator between posts
+                echo '<div class="card my-3">
+                        <div class="card-body">
+                            <h5 class="card-title">' . htmlspecialchars($post['title']) . '</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Written by <i><strong>' . htmlspecialchars($post['username']) . '</strong></i></h6>
+                            <p class="card-text">' . htmlspecialchars($post['content']) . '</p>
+                            <p class="card-subtitle mb-2 text-body-secondary">Category <i><strong>' . htmlspecialchars($post['name']) . '</strong></i></p>
+                        </div>
+                    </div>';
             }
         echo '</div>';
     } else {
