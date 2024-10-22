@@ -24,12 +24,12 @@
     // Loop through the results if there's a full associations of username and hased password return 
     foreach($rows as $row) {
         if ($row['username'] === $_POST['username'] && password_verify($_POST['password'], $row['password'])) {
-            $_SESSION['login_message'] = 'You succesfully login!';
+            $_SESSION['login_message'] = 'You succesfully logged in!';
             header('Location: index.php');
             exit();
         } else {
             $_SESSION['login_message'] = 'Your email or password is incorrect! Please try again.';
-            header('Location: index.php');
+            header('Location: login_form.php');
             exit;
         };
     }
