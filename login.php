@@ -8,8 +8,8 @@
     // Check connection if error redirect
     if ($mysqli -> connect_errno) {
         $_SESSION['error_message'] = "Failed to connect to MySQL: " . $mysqli -> connect_error;
-        // Redirect to index.php
-        header("Location: index.php");
+        // Redirect to home_page.php
+        header("Location: home_page.php");
         // Exit connection
         exit();
     }
@@ -25,12 +25,12 @@
     foreach($rows as $row) {
         if ($row['username'] === $_POST['username'] && password_verify($_POST['password'], $row['password'])) {
             $_SESSION['login_message'] = 'You succesfully logged in!';
-            header('Location: index.php');
+            header('Location: home_page.php');
             exit();
         } else {
             $_SESSION['login_message'] = 'Your email or password is incorrect! Please try again.';
-            header('Location: login_form.php');
-            exit;
+            header('Location: login_page.php');
+            exit();
         };
     }
 ?>

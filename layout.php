@@ -19,10 +19,10 @@
         <!-- Header -->
         <header>
             <div class="container py-2 d-flex justify-content-between align-items-center">
-                <a href="index.php"><h1 class="text-white">My Blog</h1></a>
+                <a href="home_page.php"><h1 class="text-white">My Blog</h1></a>
         
                 <nav>
-                    <a class="btn btn-primary" href="login_form.php">Login</a>
+                    <a class="btn btn-primary" href="login_page.php">Login</a>
                 </nav>
             </div>
         </header>
@@ -47,7 +47,7 @@
             }
         ?>
         <!-- Get messages from session and print with bootstrap alerts -->
-
+            
         <!-- JS to hide alerts -->
         <script>
             setTimeout(function() {
