@@ -55,6 +55,9 @@
             }  else if (isset($_SESSION['login_message']) && $_SESSION['login_message'] === "Please provide both username and password.") {
                 echo '<div class="container mt-5 alert alert-warning" role="alert" id="loginMessage">' . $_SESSION['login_message'] . '</div>';
                 unset($_SESSION['login_message']);
+            } else if (isset($_SESSION['login_message']) && $_SESSION['login_message'] === "You have successfully logged out.") {
+                echo '<div class="container mt-5 alert alert-primary" role="alert" id="loginMessage">' . $_SESSION['login_message'] . '</div>';
+                unset($_SESSION['login_message']);
             }
         ?>
         <!-- Get messages from session and print with bootstrap alerts -->
