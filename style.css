@@ -1,4 +1,7 @@
 /****** COMMON  ******/
+header {
+    background-color: cornflowerblue;
+}
 a {
     text-decoration: none;
     color: white;
