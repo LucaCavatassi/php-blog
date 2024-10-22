@@ -22,7 +22,16 @@
                 <a href="home_page.php"><h1 class="text-white">My Blog</h1></a>
         
                 <nav>
-                    <a class="btn btn-primary" href="login_page.php">Login</a>
+                <?php 
+                    session_start();
+                    // var_dump($_SESSION);
+                    if (isset($_SESSION['user_id'])) {
+                        echo '<a class="btn btn-secondary" href="create_post_page.php">&plus; Add Post</a>';
+                        echo '<a class="ms-4 btn btn-primary" href="logut.php">Logout</a>';
+                    } else {
+                        echo '<a class="btn btn-primary" href="login_page.php">Login</a>';
+                    }
+                ?>
                 </nav>
             </div>
         </header>
@@ -30,8 +39,7 @@
 
         <!-- Get messages from session and print with bootstrap alerts -->
         <?php
-            session_start();
-            var_dump($_SESSION);
+            // var_dump($_SESSION);
             // If error message has been set print it
             if (isset($_SESSION['error_message'])) {
                 echo '<div class="container mt-5 alert alert-danger" role="alert" id="errorMessage">' . $_SESSION['error_message'] . '</div>';
