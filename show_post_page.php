@@ -28,10 +28,17 @@ if (isset($_GET['id'])) {
 
         // Display the post data
         echo "<div class='container mt-3'>";
-        echo "<h1>" . htmlspecialchars($post['title']) . "</h1>";
-        echo "<p>" . nl2br(htmlspecialchars($post['content'])) . "</p>";
-        echo "<p>Category: " . htmlspecialchars($post['name']) . "</p>";
-        echo "<p>Posted by: " . htmlspecialchars($post['username']) . "</p>";
+            echo "<div class='d-flex justify-content-between align-items-center my-4'>";
+                echo "<h1 class='mb-0'>" . htmlspecialchars($post['title']) . "</h1>";
+                echo "<a href='home_page.php' class='btn btn-secondary'>&leftarrow; Show posts</a>";
+            echo "</div>";
+
+            echo "<p>" . nl2br(htmlspecialchars($post['content'])) . "</p>";
+            echo "<div class='d-flex justify-content-between align-items-center my-4'>";
+                echo "<p class='text-secondary'>Written by <i><strong> " . htmlspecialchars($post['username']) . " </i></strong></p>";
+                echo "<p class='text-secondary'>Category <i><strong> " . htmlspecialchars($post['name']) . " </i></strong></p>";
+            echo "</div>";
+
         echo "</div";
     } else {
         echo "<div class='container mt-3'>";

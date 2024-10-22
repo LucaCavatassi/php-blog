@@ -18,9 +18,8 @@
             foreach ($rows as $post) {
                 echo '<div class="card my-3">
                         <div class="card-body">
-                            <h5 class="card-title">' . htmlspecialchars($post['title']) . '</h5>
+                            <h5 class="card-title fw-bold fs-2">' . htmlspecialchars($post['title']) . '</h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary">Written by <i><strong>' . htmlspecialchars($post['username']) . '</strong></i></h6>
-                            <p class="card-text">' . htmlspecialchars($post['content']) . '</p>
                             <p class="card-subtitle mb-2 text-body-secondary">Category <i><strong>' . htmlspecialchars($post['name']) . '</strong></i></p>
                             <form action="show_post.php" method="POST">
                                 <input type="hidden" name="id" value=' . $post['id'] . '>
