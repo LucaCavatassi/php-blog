@@ -15,10 +15,14 @@
     // Check if rows have been fetched and display them
     if (!empty($rows)) {
         echo '<div class="container mt-3">';
-            foreach ($rows as $post) {
+        foreach ($rows as $post) {
+                $date = date_create($post['updated_at']);
                 echo '<div class="card my-3">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold fs-2">' . htmlspecialchars($post['title']) . '</h5>
+                            <div class="d-flex justify-content-between align-items-center"> 
+                                <h5 class="card-title fw-bold fs-2">' . htmlspecialchars($post['title']) . '</h5>
+                                <span class="fs-6 text-secondary"> <i>Last update </i><strong>' . date_format($date, 'm/d/Y') . '</strong></span>
+                            </div>
                             <h6 class="card-subtitle mb-2 text-body-secondary">Written by <i><strong>' . htmlspecialchars($post['username']) . '</strong></i></h6>
                             <p class="card-subtitle mb-2 text-body-secondary">Category <i><strong>' . htmlspecialchars($post['name']) . '</strong></i></p>
                             <form action="show_post.php" method="POST">
