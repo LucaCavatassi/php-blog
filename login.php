@@ -20,7 +20,11 @@
         // Fetch data (MYSQLI_ASSOC makes a key value array for each row)
         $rows = $result -> fetch_all(MYSQLI_ASSOC);
 
-        var_dump($rows);
+        foreach($rows as $row) {
+            if ($row['username'] === $_POST['username'] && ) {
+                var_dump('good');
+            };
+        }
     ?>
     </body>
 </html>
