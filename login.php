@@ -15,36 +15,42 @@ if ($mysqli->connect_errno) {
 
 // Check if POST data is available
 if (!empty($_POST['username']) && !empty($_POST['password'])) {
-    // Query build
-    $sql = "SELECT * FROM users";
-    // Result - it's the query applied to the db
-    $result = $mysqli->query($sql);
-    
-    // Fetch data (MYSQLI_ASSOC makes a key-value array for each row)
-    $rows = $result->fetch_all(MYSQLI_ASSOC);
-    
-    // Login failed by default
-    $login_successful = false;
+    $username = htmlspecialchars(trim($_POST['username']));
+    $password = $_POST['password'];
 
-    // Loop through the results to check username and hashed password
-    foreach($rows as $row) {
-        if ($row['username'] === $_POST['username'] && password_verify($_POST['password'], $row['password'])) {
+    // Prepare statement
+    $stmt = $mysqli->prepare("SELECT * FROM users WHERE username = ?");
+    // Attach param s means string
+    $stmt->bind_param('s', $username);
+    // Execute
+    $stmt->execute();
+    // Get the results
+    $result = $stmt->get_result();
+    
+    // Fetch data
+    // If number of rows retrieved it's more than 0 so the user it's found go on
+    if ($result->num_rows > 0) {
+        // Array key-value of data
+        $user = $result->fetch_assoc();
+        
+        // Verify password
+        if (password_verify($password, $user['password'])) {
             // If credentials are correct, store user details in session
-            $_SESSION['user_id'] = $row['id'];
-            $_SESSION['username'] = $row['username'];
-            $_SESSION['login_message'] = 'You successfully logged in!'; // Fixed typo
-            
-            // Set flag for successful login
-            $login_successful = true;
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['login_message'] = 'You successfully logged in!';
             
             // Redirect to home_page.php
             header('Location: home_page.php');
             exit();
+        } else {
+            // Invalid password
+            $_SESSION['login_message'] = 'Your username or password is incorrect! Please try again.';
+            header('Location: login_page.php');
+            exit();
         }
-    }
-
-    // If login failed after checking all rows
-    if (!$login_successful) {
+    } else {
+        // No such username found
         $_SESSION['login_message'] = 'Your username or password is incorrect! Please try again.';
         header('Location: login_page.php');
         exit();
