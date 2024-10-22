@@ -16,7 +16,13 @@
     if (!empty($rows)) {
         echo '<div class="container mt-3">';
         foreach ($rows as $post) {
-                $date = date_create($post['updated_at']);
+                // Check if updated date exist print that if not print the created date
+                if (isset($post['updated_at'])) {
+                    $date = date_create($post['updated_at']);
+                } else {
+                    $date = date_create($post['created_at']);
+                }
+
                 echo '<div class="card my-3">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center"> 

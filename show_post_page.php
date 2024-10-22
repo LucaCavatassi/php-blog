@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     $id = (int)$_GET['id'];
 
     // Prepare statement
-    $stmt = $mysqli->prepare("SELECT posts.id, posts.title, posts.content, categories.name, users.username
+    $stmt = $mysqli->prepare("SELECT posts.id, posts.title, posts.content, posts.created_at, posts.updated_at, categories.name, users.username
             FROM posts
             INNER JOIN categories ON posts.category_id = categories.id
             INNER JOIN users ON posts.user_id = users.id
@@ -26,6 +26,9 @@ if (isset($_GET['id'])) {
     if ($result->num_rows > 0) {
         $post = $result->fetch_assoc();
 
+        $dateCreate = date_create($post['created_at']);
+        $dateUpdate = date_create($post['updated_at']);
+
         // Display the post data
         echo "<div class='container mt-3'>";
             echo "<div class='d-flex justify-content-between align-items-center my-4'>";
@@ -34,9 +37,15 @@ if (isset($_GET['id'])) {
             echo "</div>";
 
             echo "<p>" . nl2br(htmlspecialchars($post['content'])) . "</p>";
-            echo "<div class='d-flex justify-content-between align-items-center my-4'>";
+
+            echo "<div class='d-flex justify-content-between align-items-center mt-4'>";
                 echo "<p class='text-secondary'>Written by <i><strong> " . htmlspecialchars($post['username']) . " </i></strong></p>";
                 echo "<p class='text-secondary'>Category <i><strong> " . htmlspecialchars($post['name']) . " </i></strong></p>";
+            echo "</div>";
+
+            echo "<div>";
+                echo "<p class='text-secondary'>Created on <i><strong> " . date_format($dateCreate, 'm/d/Y') . " </i></strong></p>";
+                echo "<p class='text-secondary'>Last update on <i><strong> " . date_format($dateUpdate, 'm/d/Y') . " </i></strong></p>";
             echo "</div>";
 
         echo "</div";
