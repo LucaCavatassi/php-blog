@@ -1,16 +1,7 @@
 <html>
     <body>
-        <?php 
-
-        echo('Hello World');
-
-        
-
-
-
-
-        ?> 
-        <form action="GET">
+        <!-- On action the file that handles the login -->
+        <form action="login.php" method="POST">
             <label for="username">Username</label>
             <input type="text" id="username" name="username">
             <label for="password">Password</label>
