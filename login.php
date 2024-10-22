@@ -2,11 +2,14 @@
     <body>
 
     <?php
+        // New object that create a connection to the db
         $mysqli = new mysqli("localhost","root","root","my_blog_db");
 
         // Check connection
         if ($mysqli -> connect_errno) {
             echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+            // Redirect to index.php
+            header("Location: index.php");
             exit();
         }
 
@@ -19,6 +22,5 @@
 
         var_dump($rows);
     ?>
-
     </body>
 </html>
