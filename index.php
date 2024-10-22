@@ -25,25 +25,37 @@
         </div>
     </header>
 
+    <!-- Print messages -->
+    <?php
+        // Start the session
+        session_start();
+        // If error message has been set print it
+        if(isset($_SESSION['error_message'])) {
+            echo '<div class="container mt-5 alert alert-danger" role="alert" id="errorMessage">' . $_SESSION['error_message'] . '</div>';
+            unset ($_SESSION['error_message']);
+        }
+        // If login message has been set print it
+        if (isset($_SESSION['login_message'])) {
+            echo '<div class="container mt-5 alert alert-success" role="alert" id="loginMessage">' . $_SESSION['login_message'] . '</div>';
+            unset($_SESSION['login_message']);
+        }
+    ?>
+    <!-- Print messages -->
 
-
-
-
-        <!-- Print messages -->
-        <?php
-            // Start the session
-            session_start();
-            // If error message has been set print it
-            if(isset($_SESSION['error_message'])) {
-                echo $_SESSION['error_message'];
-                unset ($_SESSION['error_message']);
+    <script>
+        // Hide after 5 seconds
+        setTimeout(function() {
+            const errorMessage = document.getElementById('errorMessage');
+            const loginMessage = document.getElementById('loginMessage');
+            
+            if (errorMessage) {
+                errorMessage.style.display = 'none'; // Hide the error message
             }
-            // If login message has been set print it
-            if (isset($_SESSION['login_message'])) {
-                echo $_SESSION['login_message'];
-                unset($_SESSION['login_message']);
+            
+            if (loginMessage) {
+                loginMessage.style.display = 'none'; // Hide the login message
             }
-        
-        ?>
+        }, 3000);
+    </script>
 </body>
 </html>
