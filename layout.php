@@ -30,19 +30,22 @@
 
         <!-- Get messages from session and print with bootstrap alerts -->
         <?php
-            // Start the session
             session_start();
+            var_dump($_SESSION);
             // If error message has been set print it
-            if(isset($_SESSION['error_message'])) {
+            if (isset($_SESSION['error_message'])) {
                 echo '<div class="container mt-5 alert alert-danger" role="alert" id="errorMessage">' . $_SESSION['error_message'] . '</div>';
-                unset ($_SESSION['error_message']);
+                unset($_SESSION['error_message']);
             }
             // If login message has been set print it
-            if (isset($_SESSION['login_message']) && $_SESSION['login_message'] === "You succesfully logged in!") {
+            if (isset($_SESSION['login_message']) && $_SESSION['login_message'] === "You successfully logged in!") { // Fixed typo
                 echo '<div class="container mt-5 alert alert-success" role="alert" id="loginMessage">' . $_SESSION['login_message'] . '</div>';
                 unset($_SESSION['login_message']);
-            } else if (isset($_SESSION['login_message']) && $_SESSION['login_message'] === "Your email or password is incorrect! Please try again."){
+            } else if (isset($_SESSION['login_message']) && $_SESSION['login_message'] === "Your username or password is incorrect! Please try again.") {
                 echo '<div class="container mt-5 alert alert-danger" role="alert" id="loginMessage">' . $_SESSION['login_message'] . '</div>';
+                unset($_SESSION['login_message']);
+            }  else if (isset($_SESSION['login_message']) && $_SESSION['login_message'] === "Please provide both username and password.") {
+                echo '<div class="container mt-5 alert alert-warning" role="alert" id="loginMessage">' . $_SESSION['login_message'] . '</div>';
                 unset($_SESSION['login_message']);
             }
         ?>
