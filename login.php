@@ -21,7 +21,7 @@
         $rows = $result -> fetch_all(MYSQLI_ASSOC);
 
         foreach($rows as $row) {
-            if ($row['username'] === $_POST['username'] && ) {
+            if ($row['username'] === $_POST['username'] && password_verify($_POST['password'], $row['password'])) {
                 var_dump('good');
             };
         }
