@@ -30,7 +30,7 @@
                             echo '<a class="btn btn-success" href="manage_post_page.php">Manage Posts</a>';
                             echo '<form action="logout.php" method="POST" class="d-inline"><button class="ms-4 btn btn-primary">Logout</button></form>';
                         } else {
-                            echo '<a class="btn btn-secondary" href="register_page.php">Register</a>';
+                            echo '<a class="btn btn-secondary me-4" href="register_page.php">Register</a>';
                             echo '<a class="btn btn-primary" href="login_page.php">Login</a>';
                         }
                     ?>
