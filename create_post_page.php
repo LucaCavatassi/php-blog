@@ -42,8 +42,8 @@ $rowsCat = $resultCat->fetch_all(MYSQLI_ASSOC);
         <!-- Description -->
         <div class="mb-3">
             <label for="content" class="form-label fw-bold">Content*</label>
+            <!-- This works the same as title, if set use it, else empty -->
             <textarea type="text" id="content" name="content" class="form-control">
-                <!-- This works the same as title, if set use it else empty -->
                 <?php echo isset($_SESSION['form_data']['content']) ? $_SESSION['form_data']['content'] : ''; ?>
             </textarea>
         </div>

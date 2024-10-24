@@ -59,6 +59,11 @@
                 echo '<div class="container mt-5 alert alert-primary" role="alert" id="loginMessage">' . $_SESSION['login_message'] . '</div>';
                 unset($_SESSION['login_message']);
             }
+
+            if (isset($_SESSION['success_message'])) {
+                echo '<div class="container mt-5 alert alert-success" role="alert" id="errorMessage">' . $_SESSION['success_message'] . '</div>';
+                unset($_SESSION['success_message']);
+            }
         ?>
         <!-- Get messages from session and print with bootstrap alerts -->
             
