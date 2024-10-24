@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
                 echo "<a href='home_page.php' class='btn btn-secondary'>&leftarrow; Show posts</a>";
             echo "</div>";
 
-            echo "<p>" . nl2br(htmlspecialchars($post['content'])) . "</p>";
+            echo "<p>" . (htmlspecialchars($post['content'])) . "</p>";
 
             echo "<div class='d-flex justify-content-between align-items-center mt-4'>";
                 echo "<p class='text-secondary'>Written by <i><strong> " . htmlspecialchars($post['username']) . " </i></strong></p>";

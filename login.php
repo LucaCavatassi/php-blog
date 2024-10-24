@@ -32,7 +32,7 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
     if ($result->num_rows > 0) {
         // Array key-value of data
         $user = $result->fetch_assoc();
-        
+        var_dump($user);
         // Verify password
         if (password_verify($password, $user['password'])) {
             // If credentials are correct, store user details in session

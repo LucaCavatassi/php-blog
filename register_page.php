@@ -1,8 +1,9 @@
 <?php include 'layout.php'; ?>
 
 <div class="container mt-5">
+    <h1 class="fs-2">Register</h1>
     <div class="d-flex justify-content-between align-items-center">
-        <h1 class="fs-4">Please enter a username and a password</h1>
+        <span class="text-secondary">Please enter a username and a password</span>
         <span class="text-secondary">Fields with * are necessary</span>
     </div>
 
@@ -14,7 +15,7 @@
         </div>
         <div class="mb-3">
             <label for="password" class="form-label fw-bold">Password*</label>
-            <input type="password" id="password" name="password" class="form-control">
+            <input type="password" id="password" name="password" class="form-control" minlength="8" >
         </div>
         <button type="submit" class="btn btn-primary">Register</button>
     </form>
