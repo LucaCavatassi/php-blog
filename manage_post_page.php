@@ -45,10 +45,20 @@ if (!empty($rows)) {
                             </div>
                             <h6 class="card-subtitle mb-2 text-body-secondary">Written by <i><strong>' . htmlspecialchars($post['username']) . '</strong></i></h6>
                             <p class="card-subtitle mb-2 text-body-secondary">Category <i><strong>' . htmlspecialchars($post['name']) . '</strong></i></p>
-                            <form action="delete_post.php" method="POST">
-                                <input type="hidden" name="id" value=' . $post['id'] . '>
-                                <button type="submit" class="btn btn-danger">Delete Post</button>
-                            </form>
+                            <div class="d-flex gap-2">
+                                <form action="show_post.php" method="POST">
+                                    <input type="hidden" name="id" value=' . $post['id'] . '>
+                                    <button type="submit" class="btn btn-primary">View Post</button>
+                                </form>
+                                <form action="edit_post_page.php" method="POST">
+                                    <input type="hidden" name="id" value=' . $post['id'] . '>
+                                    <button type="submit" class="btn btn-primary">Edit Post</button>
+                                </form>
+                                <form action="delete_post.php" method="POST">
+                                    <input type="hidden" name="id" value=' . $post['id'] . '>
+                                    <button type="submit" class="btn btn-danger">Delete Post</button>
+                                </form>
+                            </div>
                         </div>
                     </div>';
     }
