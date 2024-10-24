@@ -5,14 +5,21 @@
 $mysqli = new mysqli("localhost", "root", "root", "my_blog_db");
 
 // Query build
-$sql = "SELECT *
+$sqlUsers = "SELECT *
             FROM users";
 // Result it's the query applied to the db
-$result = $mysqli->query($sql);
+$resultUsers = $mysqli->query($sqlUsers);
 // Fetch data (MYSQLI_ASSOC makes a key value array for each row)
-$rows = $result->fetch_all(MYSQLI_ASSOC);
+$rowsUsers = $resultUsers->fetch_all(MYSQLI_ASSOC);
 
-var_dump($rows);
+$sqlCategories = "SELECT * FROM categories";
+// Result it's the query applied to the db
+$resultCat = $mysqli->query($sqlCategories);
+// Fetch data (MYSQLI_ASSOC makes a key value array for each row)
+$rowsCat = $resultCat->fetch_all(MYSQLI_ASSOC);
+
+var_dump($rowsCat);
+
 ?>
 
 <div class="container mt-4">
@@ -28,11 +35,22 @@ var_dump($rows);
         </div>
         <div class="mb-3">
             <label for="user" class="form-label fw-bold">Author*</label>
-            <select name="author" class="form-select" aria-label="select-author">
+            <select id="user" name="user" class="form-select" aria-label="select-author">
                 <option value="" disabled selected>Select author</option>
                 <?php
-                foreach ($rows as $user) {
+                foreach ($rowsUsers as $user) {
                     echo '<option value="' . $user['id'] . '">' . $user['username'] . '</option>';
+                }
+                ?>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="categories" class="form-label fw-bold">Category*</label>
+            <select id="categories" name="categories" class="form-select" aria-label="select-author">
+                <option value="" disabled selected>Select category</option>
+                <?php
+                foreach ($rowsCat as $categories) {
+                    echo '<option value="' . $categories['id'] . '">' . $categories['name'] . '</option>';
                 }
                 ?>
             </select>
