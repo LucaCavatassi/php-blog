@@ -48,47 +48,37 @@ $rowsCat = $resultCat->fetch_all(MYSQLI_ASSOC);
             </textarea>
         </div>
         <!-- Description -->
-
-        <!-- Author/User -->
+        
+        <!-- Category -->
         <div class="mb-3">
-            <label for="user_id" class="form-label fw-bold">Author*</label>
-            <select id="user_id" name="user_id" class="form-select" aria-label="select-author">
+            <label for="category_id" class="form-label fw-bold">Category*</label>
+            <select id="category_id" name="category_id" class="form-select" aria-label="select-author">
                 <!-- This is the grey select an author unclickable option
                 if it's not been set user_id as was for title apply selected attribute so it shows 
                 else nothing, use echo cause it need to be printed  -->
-                <option value="" <?php echo !isset($_SESSION['form_data']['user_id']) ? 'selected' : ''; ?> disabled>Select author</option>
-
+                <option value="" <?php echo !isset($_SESSION['form_data']['category_id']) ? 'selected' : ''; ?> disabled>Select category</option>
                 <!-- Loop each user to show and select which one it's the author
                 this is been thinked as this cause i thought maybe someone can have a master account manging more users -->
                 <?php
-                foreach ($rowsUsers as $user) {
+                foreach ($rowsCat as $categories) {
                     // Set selected if the user_id from the session matches the current user's id
                     // If is set and matches the current element in the foreach loop, it's the one so it's the selected
-                    $selected = (isset($_SESSION['form_data']['user_id']) && $_SESSION['form_data']['user_id'] == $user['id']) ? 'selected' : '';
-                    // Print the option with the value of the id of the user, and user userename, and also the selected that if conditions are met will be selected
-                    echo '<option value="' . $user['id'] . '" ' . $selected . '>' . htmlspecialchars($user['username']) . '</option>';
-                }
-                ?>
-            </select>
-        </div>
-        <!-- Author/User -->
-
-        <!-- Category -->
-        <div class="mb-3">
-            <!-- Equal to author same logic  -->
-            <label for="category_id" class="form-label fw-bold">Category*</label>
-            <select id="category_id" name="category_id" class="form-select" aria-label="select-author">
-                <option value="" <?php echo !isset($_SESSION['form_data']['category_id']) ? 'selected' : ''; ?> disabled>Select category</option>
-                <?php
-                foreach ($rowsCat as $categories) {
-                    // Set selected if the category_id from the session matches the current category's id
                     $selected = (isset($_SESSION['form_data']['category_id']) && $_SESSION['form_data']['category_id'] == $categories['id']) ? 'selected' : '';
+                    // Print the option with the value of the id of the user, and user userename, and also the selected that if conditions are met will be selected
                     echo '<option value="' . $categories['id'] . '" ' . $selected . '>' . htmlspecialchars($categories['name']) . '</option>';
                 }
                 ?>
             </select>
         </div>
         <!-- Category -->
+
+        <!-- Author/User -->
+        <div class="mb-3">
+            <label for="user_id" class="form-label fw-bold">Author - </label>
+            <input type="hidden" id="user_id" name="user_id" value="<?php echo htmlspecialchars($_SESSION['user_id']); ?>">
+            <span class="fs-6"><?php echo htmlspecialchars($_SESSION['username']); ?></span> <!-- Display the username -->
+        </div>
+        <!-- Author/User -->
 
         <!-- Submit -->
         <button type="submit" class="btn btn-primary">Create Post</button>
