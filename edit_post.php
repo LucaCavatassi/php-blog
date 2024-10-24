@@ -25,6 +25,7 @@ if (isset($_POST['id']) && !empty($_POST['title']) && !empty($_POST['content']))
     $stmt->bind_param("ssiii", $title, $content, $user_id, $category_id, $post_id);
     $stmt->execute();
 
+    
     // Clear the session data after successful update
     $_SESSION['success_message'] = "Your post has been updated successfully.";
     
