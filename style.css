@@ -21,4 +21,12 @@ a:hover {
     border-radius: 10px;
     background-color: ghostwhite;
 }
+
+.card {
+    img {
+        height: 300px;
+        object-fit: cover;
+        object-position: center;
+    }
+}
 /****** COMMON  ******/

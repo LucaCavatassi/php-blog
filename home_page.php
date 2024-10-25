@@ -22,9 +22,16 @@
                 } else {
                     $date = date_create($post['created_at']);
                 }
+                
+                echo '<div class="card my-3">';
 
-                echo '<div class="card my-3">
-                        <div class="card-body">
+                if (isset($post['image'])) {
+                    echo '<img src="' . htmlspecialchars($post['image']) . '" class="card-img-top" alt="...">';
+                }  else {
+                    echo '<img src="https://media.istockphoto.com/id/1324356458/vector/picture-icon-photo-frame-symbol-landscape-sign-photograph-gallery-logo-web-interface-and.jpg?s=612x612&w=0&k=20&c=ZmXO4mSgNDPzDRX-F8OKCfmMqqHpqMV6jiNi00Ye7rE=" class="card-img-top" alt="...">';
+                }
+
+                echo   '<div class="card-body">
                             <div class="d-flex justify-content-between align-items-center"> 
                                 <h5 class="card-title fw-bold fs-2">' . htmlspecialchars($post['title']) . '</h5>
                                 <span class="fs-6 text-secondary"> <i>Last update </i><strong>' . date_format($date, 'm/d/Y') . '</strong></span>
@@ -35,8 +42,9 @@
                                 <input type="hidden" name="id" value=' . $post['id'] . '>
                                 <button type="submit" class="btn btn-primary">View Post</button>
                             </form>
-                        </div>
-                    </div>';
+                        </div>';
+
+                echo    '</div>';
             }
         echo '</div>';
     } else {
