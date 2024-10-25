@@ -26,10 +26,11 @@ if (empty($_POST['title']) || empty($_POST['content']) || empty($_POST['user_id'
     $content = $_POST['content'];
     $user_id = (int)$_POST['user_id'];
     $category_id = (int)$_POST['category_id'];
+    $image = $_POST['image'];
 
     // Prepare the SQL statement; remove `id` if it's auto-increment
-    $stmt = $mysqli->prepare("INSERT INTO posts (`title`, `content`, `user_id`, `category_id`, `created_at`, `updated_at`) VALUES (?, ?, ?, ?, NOW(), NOW())");
-    $stmt->bind_param("ssii", $title, $content, $user_id, $category_id);
+    $stmt = $mysqli->prepare("INSERT INTO posts (`title`, `content`, `image`, `user_id`, `category_id`, `created_at`, `updated_at`) VALUES (?, ?, ?, ?, ?, NOW(), NOW())");
+    $stmt->bind_param("sssii", $title, $content, $image, $user_id, $category_id);
     $stmt->execute();
 
     // Clear the session data after successful insertion
