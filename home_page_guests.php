@@ -6,7 +6,8 @@
         $sql = "SELECT posts.id, posts.title, posts.content, posts.image, posts.created_at, posts.updated_at, categories.name, users.username
                 FROM posts
                 INNER JOIN categories ON posts.category_id = categories.id
-                INNER JOIN users ON posts.user_id = users.id;";
+                INNER JOIN users ON posts.user_id = users.id
+                ORDER BY posts.updated_at DESC;";
         // Result it's the query applied to the db
         $result = $mysqli->query($sql);
         // Fetch data (MYSQLI_ASSOC makes a key value array for each row)

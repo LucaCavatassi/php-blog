@@ -15,6 +15,23 @@ a:hover {
     color: darkblue!important;
 }
 
+.btn-danger:hover {
+    color: black!important;
+}
+
+.btn-info:hover {
+    color: white!important;
+}
+
+.btn-success:hover {
+    color: rgb(160, 255, 150)!important;
+}
+
+.btn-secondary:hover {
+    color: black!important;
+}
+
+
 .ms-form {
     padding: 2.5rem;
     border: 2px solid cornflowerblue;

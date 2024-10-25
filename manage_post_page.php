@@ -12,7 +12,8 @@ $sql = "SELECT posts.id, posts.title, posts.content, posts.created_at, posts.upd
             FROM posts
             INNER JOIN categories ON posts.category_id = categories.id
             INNER JOIN users ON posts.user_id = users.id
-            WHERE posts.user_id = ?";
+            WHERE posts.user_id = ?
+            ORDER BY posts.updated_at DESC";
 
 $stmt = $mysqli->prepare($sql);
 $stmt->bind_param("i", $user_id); // "i" means integer
@@ -52,7 +53,7 @@ if (!empty($rows)) {
                                 </form>
                                 <form action="edit_post_page.php" method="POST">
                                     <input type="hidden" name="id" value=' . $post['id'] . '>
-                                    <button type="submit" class="btn btn-primary">Edit Post</button>
+                                    <button type="submit" class="btn btn-info">Edit Post</button>
                                 </form>
                                 <form action="delete_post.php" method="POST">
                                     <input type="hidden" name="id" value=' . $post['id'] . '>
