@@ -80,6 +80,17 @@ $rowsCat = $resultCat->fetch_all(MYSQLI_ASSOC);
         </div>
         <!-- Author/User -->
 
+        <!-- IMG -->
+        <div class="mb-3">
+            <label for="image" class="form-label fw-bold">Image URL - </label>
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon">https://example.com/users/</span>
+                <input type="url" name="image" class="form-control" id="image" aria-describedby="image-url" value="<?php echo isset($_SESSION['form_data']['image']) ? $_SESSION['form_data']['image'] : ''; ?>">
+            </div>
+            <div class="form-text" id="basic-addon4">Insert the url here</div>
+        </div>
+        <!-- IMG -->
+
         <!-- Submit -->
         <button type="submit" class="btn btn-primary">Create Post</button>
         <!-- Submit -->
