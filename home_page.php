@@ -18,9 +18,9 @@ $categories = $result->fetch_all(MYSQLI_ASSOC);
     <h1>All blog posts</h1>
     <div class="text-secondary d-flex gap-3 align-items-center">
         <span>Select a category</span>
-        <form action="filter.php" method="GET">
+        <form action="filter_page.php" method="GET">
             <select onchange="this.form.submit()" class="form-select" name="category" id="category">
-                <option value="" disabled selected>Select a category...</option>
+                <option value="" disabled selected>Example...JS</option>
                 <?php
                 foreach ($categories as $category) {
                     echo '<option value="' . $category['id'] . '">' . htmlspecialchars($category['name']) . '</option>';

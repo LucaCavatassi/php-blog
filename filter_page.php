@@ -51,6 +51,8 @@ if (!empty($rows)) {
     }
     echo '</div>';
 } else {
-    echo '<div class="container mt-5">No posts found.</div>';
+    echo '<div class="container mt-5">
+            <h1>No posts found in this category.</h1>
+        </div>';
 }
 ?>
