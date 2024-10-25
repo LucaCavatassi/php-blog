@@ -17,12 +17,13 @@ if (isset($_POST['id']) && !empty($_POST['title']) && !empty($_POST['content']))
     $post_id = (int)$_POST['id'];
     $title = htmlspecialchars(trim($_POST['title']));
     $content = htmlspecialchars(trim($_POST['content']));
+    $image = htmlspecialchars(trim($_POST['image']));
     $user_id = (int)$_POST['user_id'];
     $category_id = (int)$_POST['category_id'];
 
     // Prepare statement to update the post
-    $stmt = $mysqli->prepare("UPDATE posts SET title = ?, content = ?, user_id = ?, category_id = ?, updated_at = NOW() WHERE id = ?");
-    $stmt->bind_param("ssiii", $title, $content, $user_id, $category_id, $post_id);
+    $stmt = $mysqli->prepare("UPDATE posts SET title = ?, content = ?, image = ? ,user_id = ?, category_id = ?, updated_at = NOW() WHERE id = ?");
+    $stmt->bind_param("sssiii", $title, $content, $image, $user_id, $category_id, $post_id);
     $stmt->execute();
 
     

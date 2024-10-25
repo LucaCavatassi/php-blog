@@ -82,7 +82,19 @@ if (isset($_POST['id'])) {
             <input type="hidden" id="user_id" name="user_id" value="<?php echo htmlspecialchars($_SESSION['user_id']); ?>">
             <span class="fs-6"><?php echo htmlspecialchars($_SESSION['username']); ?></span>
         </div>
+        <!-- Author/User -->
 
+        <!-- IMG -->
+        <div class="mb-3">
+            <label for="image" class="form-label fw-bold">Image URL - </label>
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon">https://example.com/users/</span>
+                <input type="url" name="image" class="form-control" id="image" aria-describedby="image-url" value="<?php echo isset($post['image']) ? $post['image'] : ''; ?>">
+            </div>
+            <div class="form-text" id="basic-addon4">Insert the url here</div>
+        </div>
+        <!-- IMG -->
+        
         <!-- Submit -->
         <button type="submit" class="btn btn-primary">Update Post</button>
     </form>
