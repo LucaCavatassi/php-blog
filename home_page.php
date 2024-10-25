@@ -11,25 +11,26 @@ $result = $mysqli->query($sql);
 // Fetch data (MYSQLI_ASSOC makes a key value array for each row)
 $categories = $result->fetch_all(MYSQLI_ASSOC);
 
-var_dump($categories);
 ?>
+
 
 <div class="container mt-5 d-flex justify-content-between align-items-center">
     <h1>All blog posts</h1>
-    <div class="text-secondary d-flex gap-3">
+    <div class="text-secondary d-flex gap-3 align-items-center">
         <span>Select a category</span>
         <form action="filter.php" method="GET">
-            <select name="category" id="category">
-                <option value="" disabled selected>Javascript etc...</option>
-            <?php
-            foreach ($categories as $category) {
-                echo '<option value="'. $category['id'] . '">' . $category['name'] . '</option>';
-            }
-            ?>
+            <select onchange="this.form.submit()" class="form-select" name="category" id="category">
+                <option value="" disabled selected>Select a category...</option>
+                <?php
+                foreach ($categories as $category) {
+                    echo '<option value="' . $category['id'] . '">' . htmlspecialchars($category['name']) . '</option>';
+                }
+                ?>
             </select>
         </form>
     </div>
 </div>
+
 
 <?php
 // Include the fetch script to get posts
